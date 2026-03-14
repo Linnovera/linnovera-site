@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LinnoVera — The Natural Fibre Discovery Platform</title>
+<meta name="description" content="Find clothing made from real fibres — across every retailer, in one search. LinnoVera is the first platform to let you filter by fibre composition.">
+<meta property="og:title" content="LinnoVera — The Natural Fibre Discovery Platform">
+<meta property="og:description" content="Find clothing made from real fibres — across every retailer, in one search.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://linnovera.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #1A1814;
+  --bg2: #141210;
+  --cream: #F4F0E8;
+  --ink: #E0DBD2;
+  --ink2: #8A857E;
+  --ink3: #5A5650;
+  --gold: #A68B4B;
+  --gold-light: #C8AD6A;
+  --green: #4A7A5B;
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --sans: 'DM Sans', 'Segoe UI', sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+body { font-family: var(--sans); background: var(--bg); color: var(--ink); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+/* ═══ HERO ═══ */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  padding: 40px 24px;
+}
+
+.hero-circ {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(166,139,75,.15);
+  pointer-events: none;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+}
+.hero-c1 { width: 480px; height: 480px; animation: fadeUp 1.5s ease both .2s; }
+.hero-c2 { width: 340px; height: 340px; animation: fadeUp 1.5s ease both .5s; }
+.hero-c3 { width: 680px; height: 680px; border-color: rgba(166,139,75,.07); animation: fadeUp 2s ease both; }
+
+.hero-brand {
+  font-family: var(--serif);
+  font-size: clamp(2.8rem, 6vw, 4.2rem);
+  font-weight: 700;
+  letter-spacing: .02em;
+  animation: fadeUp 1.2s ease both .3s;
+  position: relative;
+  z-index: 1;
+}
+.hero-brand .linno { color: var(--ink); }
+.hero-brand .vera { color: var(--gold-light); font-style: italic; }
+
+.hero-sub {
+  font-size: .65rem;
+  color: var(--gold);
+  letter-spacing: .4em;
+  text-transform: uppercase;
+  margin: 14px 0 8px;
+  animation: fadeUp 1.2s ease both .6s;
+  position: relative; z-index: 1;
+}
+
+.hero-tag {
+  font-family: var(--serif);
+  font-size: clamp(.95rem, 2vw, 1.15rem);
+  color: var(--ink2);
+  font-style: italic;
+  max-width: 460px;
+  margin: 0 auto 40px;
+  animation: fadeUp 1.2s ease both .8s;
+  position: relative; z-index: 1;
+}
+
+.hero-cta {
+  display: inline-block;
+  padding: 16px 48px;
+  background: transparent;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  font-family: var(--sans);
+  font-size: .6rem;
+  letter-spacing: .35em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all .35s;
+  animation: fadeUp 1.2s ease both 1s;
+  position: relative; z-index: 1;
+  cursor: pointer;
+}
+.hero-cta:hover { background: var(--gold); color: var(--bg); }
+
+.hero-scroll {
+  position: absolute;
+  bottom: 32px;
+  font-size: .55rem;
+  color: var(--ink3);
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  animation: fadeUp 1.2s ease both 1.4s;
+}
+.hero-scroll::after {
+  content: '';
+  display: block;
+  width: 1px; height: 28px;
+  background: var(--ink3);
+  margin: 8px auto 0;
+  animation: scrollPulse 2s ease infinite;
+}
+
+/* ═══ INTERLUDE ═══ */
+.interlude {
+  padding: 80px 24px;
+  text-align: center;
+  border-top: 1px solid rgba(166,139,75,.12);
+  border-bottom: 1px solid rgba(166,139,75,.12);
+}
+.interlude-inner { max-width: 600px; margin: 0 auto; }
+.interlude h2 {
+  font-family: var(--serif);
+  font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 14px;
+  line-height: 1.4;
+}
+.interlude p {
+  font-size: .85rem;
+  color: var(--ink2);
+  line-height: 1.75;
+}
+
+/* ═══ STATS (Problem) ═══ */
+.stats {
+  padding: 80px 24px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+.section-label {
+  font-size: .55rem;
+  color: var(--gold);
+  letter-spacing: .4em;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 48px;
+}
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+.stat-card { text-align: center; }
+.stat-num {
+  font-family: var(--serif);
+  font-size: clamp(2.4rem, 5vw, 3.2rem);
+  font-weight: 700;
+  color: var(--gold-light);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.stat-label {
+  font-size: .75rem;
+  color: var(--ink);
+  font-weight: 500;
+  margin-bottom: 8px;
+  letter-spacing: .02em;
+}
+.stat-desc {
+  font-size: .72rem;
+  color: var(--ink3);
+  line-height: 1.55;
+  max-width: 260px;
+  margin: 0 auto;
+}
+
+/* ═══ SOLUTION ═══ */
+.solution {
+  padding: 80px 24px;
+  border-top: 1px solid rgba(166,139,75,.12);
+}
+.solution-inner { max-width: 800px; margin: 0 auto; }
+.solution-head {
+  text-align: center;
+  margin-bottom: 56px;
+}
+.solution-head h2 {
+  font-family: var(--serif);
+  font-size: clamp(1.3rem, 2.5vw, 1.7rem);
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+.solution-head p {
+  font-size: .8rem;
+  color: var(--ink2);
+  font-style: italic;
+}
+.features {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+.feature {
+  padding: 28px;
+  border: 1px solid rgba(166,139,75,.12);
+  border-radius: 2px;
+  transition: border-color .3s;
+}
+.feature:hover { border-color: rgba(166,139,75,.35); }
+.feature-icon {
+  width: 32px; height: 32px;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 16px;
+  font-size: .8rem;
+  color: var(--gold);
+}
+.feature h3 {
+  font-family: var(--serif);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+.feature p {
+  font-size: .75rem;
+  color: var(--ink2);
+  line-height: 1.6;
+}
+
+/* ═══ HOW IT WORKS ═══ */
+.how {
+  padding: 80px 24px;
+  border-top: 1px solid rgba(166,139,75,.12);
+}
+.how-inner { max-width: 700px; margin: 0 auto; }
+.how-steps { display: flex; flex-direction: column; gap: 36px; }
+.how-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+}
+.how-num {
+  font-family: var(--serif);
+  font-size: 2rem;
+  font-weight: 700;
+  color: rgba(166,139,75,.25);
+  line-height: 1;
+  min-width: 40px;
+}
+.how-step h3 {
+  font-family: var(--serif);
+  font-size: .95rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+.how-step p {
+  font-size: .75rem;
+  color: var(--ink2);
+  line-height: 1.6;
+}
+
+/* ═══ STANDARDS ═══ */
+.standards {
+  padding: 80px 24px;
+  border-top: 1px solid rgba(166,139,75,.12);
+}
+.standards-inner { max-width: 800px; margin: 0 auto; }
+.standards-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 48px;
+}
+.std-card {
+  padding: 24px;
+  border-left: 2px solid var(--gold);
+}
+.std-card h3 {
+  font-family: var(--serif);
+  font-size: .9rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+.std-card p {
+  font-size: .72rem;
+  color: var(--ink2);
+  line-height: 1.6;
+}
+
+/* ═══ SIGNUP ═══ */
+.signup {
+  padding: 100px 24px;
+  text-align: center;
+  border-top: 1px solid rgba(166,139,75,.12);
+}
+.signup-inner { max-width: 480px; margin: 0 auto; }
+.signup h2 {
+  font-family: var(--serif);
+  font-size: clamp(1.3rem, 2.5vw, 1.7rem);
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+.signup p {
+  font-size: .8rem;
+  color: var(--ink2);
+  margin-bottom: 28px;
+  font-style: italic;
+}
+.signup-form {
+  display: flex;
+  gap: 10px;
+  max-width: 420px;
+  margin: 0 auto 16px;
+}
+.signup-input {
+  flex: 1;
+  padding: 14px 18px;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(166,139,75,.2);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: .8rem;
+  outline: none;
+  transition: border-color .3s;
+}
+.signup-input::placeholder { color: var(--ink3); }
+.signup-input:focus { border-color: var(--gold); }
+.signup-btn {
+  padding: 14px 28px;
+  background: var(--gold);
+  border: none;
+  color: var(--bg);
+  font-family: var(--sans);
+  font-size: .6rem;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all .3s;
+  white-space: nowrap;
+}
+.signup-btn:hover { background: var(--gold-light); }
+.signup-note {
+  font-size: .65rem;
+  color: var(--ink3);
+}
+.signup-success {
+  font-size: .85rem;
+  color: var(--green);
+  font-style: italic;
+}
+
+/* ═══ FOOTER ═══ */
+footer {
+  padding: 40px 24px;
+  text-align: center;
+  border-top: 1px solid rgba(166,139,75,.08);
+}
+.footer-brand {
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.footer-brand .linno { color: var(--ink2); }
+.footer-brand .vera { color: var(--gold); font-style: italic; }
+.footer-copy {
+  font-size: .6rem;
+  color: var(--ink3);
+  letter-spacing: .1em;
+}
+.footer-links {
+  margin-top: 12px;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+.footer-links a {
+  font-size: .55rem;
+  color: var(--ink3);
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: color .3s;
+}
+.footer-links a:hover { color: var(--gold); }
+.tm { font-size: .55em; vertical-align: super; color: var(--ink3); }
+
+/* ═══ ANIMATIONS ═══ */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes scrollPulse {
+  0%, 100% { opacity: .3; }
+  50% { opacity: .8; }
+}
+
+/* Scroll-triggered fade */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity .8s ease, transform .8s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ═══ RESPONSIVE ═══ */
+@media (max-width: 680px) {
+  .stats-grid { grid-template-columns: 1fr; gap: 32px; }
+  .features { grid-template-columns: 1fr; }
+  .standards-grid { grid-template-columns: 1fr; }
+  .signup-form { flex-direction: column; }
+  .signup-btn { padding: 14px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="hero-circ hero-c3"></div>
+  <div class="hero-circ hero-c1"></div>
+  <div class="hero-circ hero-c2"></div>
+  <div class="hero-brand">
+    <span class="linno">Linno</span><span class="vera">Vera</span><span class="tm">&trade;</span>
+  </div>
+  <div class="hero-sub">The Natural Fibre Discovery Platform</div>
+  <p class="hero-tag">Find clothing made from real fibres — across every retailer, in one search.</p>
+  <a href="#early-access" class="hero-cta">Get Early Access</a>
+  <div class="hero-scroll">Scroll</div>
+</section>
+
+<!-- ═══ INTERLUDE ═══ -->
+<section class="interlude">
+  <div class="interlude-inner reveal">
+    <h2>Why fibre content is the most important label you're not reading</h2>
+    <p>Most clothing labels tell you the country of manufacture and care instructions — but the composition label is where the real story lives. A "cotton blend" shirt might be 85% polyester. LinnoVera exists so you never have to guess.</p>
+  </div>
+</section>
+
+<!-- ═══ STATS (Problem) ═══ -->
+<section class="stats">
+  <div class="section-label reveal">The Problem</div>
+  <div class="stats-grid">
+    <div class="stat-card reveal">
+      <div class="stat-num">15%</div>
+      <div class="stat-label">Minimum "cotton blend" content</div>
+      <div class="stat-desc">Brands exploit labelling loopholes. A "cotton blend" shirt can be 85% polyester.</div>
+    </div>
+    <div class="stat-card reveal">
+      <div class="stat-num">0</div>
+      <div class="stat-label">Retailers with a fibre filter</div>
+      <div class="stat-desc">No major retailer lets you filter by fibre content — only by fabric name, if at all.</div>
+    </div>
+    <div class="stat-card reveal">
+      <div class="stat-num">72%</div>
+      <div class="stat-label">Want natural, can't find it</div>
+      <div class="stat-desc">Demand exists. Discovery infrastructure doesn't.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SOLUTION ═══ -->
+<section class="solution">
+  <div class="solution-inner">
+    <div class="solution-head reveal">
+      <h2>One search. Every natural fibre product. Transparently verified.</h2>
+      <p>Starting with clothing. Expanding to outerwear, accessories, and footwear.</p>
+    </div>
+    <div class="features">
+      <div class="feature reveal">
+        <div class="feature-icon">&#9906;</div>
+        <h3>Fibre-First Search</h3>
+        <p>Filter by specific fibre type, minimum natural percentage, price, size, colour, and region. No other platform does this.</p>
+      </div>
+      <div class="feature reveal">
+        <div class="feature-icon">&#10003;</div>
+        <h3>Verified Database</h3>
+        <p>Every product is hand-checked. Every URL confirmed. Composition data extracted directly from labels.</p>
+      </div>
+      <div class="feature reveal">
+        <div class="feature-icon">&#9670;</div>
+        <h3>Hybrid Architecture</h3>
+        <p>Free curated database plus premium AI "Deep Search" beyond the catalogue. Two tiers, two revenue streams.</p>
+      </div>
+      <div class="feature reveal">
+        <div class="feature-icon">&#9993;</div>
+        <h3>Newsletter + Alerts</h3>
+        <p>Weekly editorial picks. Premium users get price-drop alerts and saved search notifications.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ HOW IT WORKS ═══ -->
+<section class="how">
+  <div class="how-inner">
+    <div class="section-label reveal">How It Works</div>
+    <div class="how-steps">
+      <div class="how-step reveal">
+        <div class="how-num">01</div>
+        <div>
+          <h3>Tell us who you're shopping for</h3>
+          <p>Yourself, your partner, your kids, or a gift. LinnoVera saves preferences across up to six family profiles.</p>
+        </div>
+      </div>
+      <div class="how-step reveal">
+        <div class="how-num">02</div>
+        <div>
+          <h3>Choose your fibres</h3>
+          <p>Organic cotton, cashmere, merino wool, European linen, mulberry silk, hemp — filter by exactly what you want against your skin.</p>
+        </div>
+      </div>
+      <div class="how-step reveal">
+        <div class="how-num">03</div>
+        <div>
+          <h3>Discover verified products</h3>
+          <p>Every result shows exact fibre percentages, verified links, and transparent pricing across multiple retailers.</p>
+        </div>
+      </div>
+      <div class="how-step reveal">
+        <div class="how-num">04</div>
+        <div>
+          <h3>Save, share, and get notified</h3>
+          <p>Save searches to your profile. Share finds with #LinnoVera. Premium members get price-drop alerts.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ STANDARDS ═══ -->
+<section class="standards">
+  <div class="standards-inner">
+    <div class="section-label reveal">Our Inclusion Standards</div>
+    <div class="standards-grid">
+      <div class="std-card reveal">
+        <h3>Minimum 60% Natural Fibre</h3>
+        <p>Every item meets our threshold. No greenwashing, no "touches of cashmere."</p>
+      </div>
+      <div class="std-card reveal">
+        <h3>Verified URLs</h3>
+        <p>Every link is manually checked. Broken links flagged and fixed within 24 hours.</p>
+      </div>
+      <div class="std-card reveal">
+        <h3>Zero Paid Placements</h3>
+        <p>No brand pays to appear. Our curation is editorial, not commercial.</p>
+      </div>
+      <div class="std-card reveal">
+        <h3>Transparent Composition</h3>
+        <p>Exact percentages displayed. If a brand won't disclose, they're not included.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SIGNUP ═══ -->
+<section class="signup" id="early-access">
+  <div class="signup-inner reveal">
+    <h2>Be the first to search by fibre</h2>
+    <p>LinnoVera launches soon. Join the early access list for first look and founding member pricing.</p>
+    <div id="signup-form-container">
+      <div class="signup-form">
+        <input type="email" class="signup-input" id="email-input" placeholder="Your email address" />
+        <button class="signup-btn" onclick="handleSignup()">Join Waitlist</button>
+      </div>
+      <div class="signup-note">No spam. Unsubscribe anytime. First newsletter ships Thursday.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="footer-brand">
+    <span class="linno">Linno</span><span class="vera">Vera</span>
+  </div>
+  <div class="footer-copy">&copy; 2026 LinnoVera, Inc. &middot; Patent Pending &middot; Natural fibres, transparently found.</div>
+  <div class="footer-links">
+    <a href="mailto:info@linnovera.com">Contact</a>
+    <a href="/privacy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+  </div>
+</footer>
+
+<script>
+// Scroll-triggered reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Signup handler
+function handleSignup() {
+  const email = document.getElementById('email-input').value;
+  if (email && email.includes('@')) {
+    document.getElementById('signup-form-container').innerHTML =
+      '<div class="signup-success">Welcome to LinnoVera. Check your inbox Thursday.</div>';
+  }
+}
+
+// Enter key for email
+document.getElementById('email-input').addEventListener('keypress', function(e) {
+  if (e.key === 'Enter') handleSignup();
+});
+</script>
+</body>
+</html>
