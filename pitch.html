@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LinnoVera — Investors</title>
+<meta name="description" content="LinnoVera investor overview. Fibre composition verification engine for the natural clothing market.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #1A1814;
+  --bg2: #141210;
+  --cream: #F4F0E8;
+  --ink: #E0DBD2;
+  --ink2: #8A857E;
+  --ink3: #5A5650;
+  --gold: #A68B4B;
+  --gold-light: #C8AD6A;
+  --green: #4A7A5B;
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --sans: 'DM Sans', 'Segoe UI', sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--sans); background: var(--bg); color: var(--ink); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+/* ═══ NAV ═══ */
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(26,24,20,.88); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid rgba(166,139,75,.1); transition: box-shadow .3s; }
+nav.scrolled { box-shadow: 0 1px 20px rgba(0,0,0,.3); }
+.nav-inner { max-width: 960px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 56px; }
+.nav-brand { font-family: var(--serif); font-size: 1.15rem; font-weight: 700; text-decoration: none; letter-spacing: .01em; }
+.nav-brand .linno { color: var(--ink); }
+.nav-brand .vera { color: var(--gold); font-style: italic; }
+.nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+.nav-links a { font-size: .6rem; font-weight: 400; color: var(--ink3); text-decoration: none; letter-spacing: .15em; text-transform: uppercase; transition: color .3s; position: relative; }
+.nav-links a:hover { color: var(--ink); }
+.nav-links a.active { color: var(--gold); }
+.nav-links a.active::after { content: ''; position: absolute; bottom: -4px; left: 0; right: 0; height: 1px; background: var(--gold); }
+.nav-cta { padding: 7px 18px !important; border: 1px solid var(--gold) !important; color: var(--gold) !important; letter-spacing: .2em !important; transition: all .3s !important; }
+.nav-cta:hover { background: var(--gold) !important; color: var(--bg) !important; }
+.nav-cta::after { display: none !important; }
+.menu-toggle { display: none; background: none; border: none; cursor: pointer; padding: 6px; }
+.menu-toggle span { display: block; width: 18px; height: 1.5px; background: var(--ink2); margin: 4px 0; }
+
+/* ═══ PAGE HEADER ═══ */
+.page-header {
+  padding: 120px 24px 20px;
+  text-align: center;
+}
+.page-header h1 {
+  font-family: var(--serif);
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 10px;
+}
+.page-header p {
+  font-family: var(--serif);
+  font-size: 1rem;
+  color: var(--ink2);
+  font-style: italic;
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+/* ═══ STATS BAR ═══ */
+.stats-bar {
+  max-width: 800px;
+  margin: 48px auto 0;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+.stat-box { text-align: center; }
+.stat-box .num {
+  font-family: var(--serif);
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  font-weight: 700;
+  color: var(--gold-light);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.stat-box .label {
+  font-size: .65rem;
+  color: var(--ink3);
+  letter-spacing: .05em;
+}
+
+/* ═══ PITCH CONTENT ═══ */
+.pitch {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 80px 24px 0;
+}
+.pitch-block {
+  margin-bottom: 56px;
+}
+.section-label {
+  font-size: .55rem;
+  color: var(--gold);
+  letter-spacing: .4em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.pitch-block h2 {
+  font-family: var(--serif);
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(166,139,75,.12);
+}
+.pitch-block p {
+  font-size: .82rem;
+  color: var(--ink2);
+  line-height: 1.75;
+  margin-bottom: 12px;
+}
+.pitch-block p:last-child { margin-bottom: 0; }
+
+/* Revenue */
+.revenue-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 20px;
+}
+.rev-card {
+  padding: 24px;
+  border: 1px solid rgba(166,139,75,.12);
+}
+.rev-card .pct {
+  font-family: var(--serif);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--gold-light);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.rev-card h4 {
+  font-family: var(--serif);
+  font-size: .9rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+.rev-card p {
+  font-size: .72rem !important;
+  line-height: 1.55;
+}
+
+/* IP */
+.ip-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 20px;
+}
+.ip-item {
+  padding: 20px;
+  border-left: 2px solid var(--gold);
+}
+.ip-item h4 {
+  font-family: var(--serif);
+  font-size: .85rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+.ip-item p {
+  font-size: .72rem !important;
+  margin-bottom: 0 !important;
+}
+
+/* Roadmap */
+.roadmap { margin-top: 20px; }
+.roadmap-item {
+  display: flex;
+  gap: 24px;
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(166,139,75,.08);
+}
+.roadmap-item:last-child { border-bottom: none; }
+.roadmap-phase {
+  flex-shrink: 0;
+  width: 80px;
+  font-size: .55rem;
+  font-weight: 500;
+  color: var(--gold);
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  padding-top: 2px;
+}
+.roadmap-body h4 {
+  font-family: var(--serif);
+  font-size: .9rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+.roadmap-body p {
+  font-size: .75rem !important;
+  margin-bottom: 0 !important;
+}
+
+/* ═══ CTA ═══ */
+.pitch-cta {
+  text-align: center;
+  padding: 80px 24px 100px;
+  border-top: 1px solid rgba(166,139,75,.12);
+}
+.pitch-cta h2 {
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 10px;
+}
+.pitch-cta p {
+  font-size: .82rem;
+  color: var(--ink2);
+  font-style: italic;
+  margin-bottom: 28px;
+  max-width: 440px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.pitch-cta-btn {
+  display: inline-block;
+  padding: 14px 40px;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  font-family: var(--sans);
+  font-size: .6rem;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all .35s;
+}
+.pitch-cta-btn:hover { background: var(--gold); color: var(--bg); }
+
+/* ═══ FOOTER ═══ */
+footer { padding: 40px 24px; text-align: center; border-top: 1px solid rgba(166,139,75,.08); }
+.footer-brand { font-family: var(--serif); font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; }
+.footer-brand .linno { color: var(--ink2); }
+.footer-brand .vera { color: var(--gold); font-style: italic; }
+.footer-copy { font-size: .6rem; color: var(--ink3); letter-spacing: .1em; }
+.footer-links { margin-top: 12px; display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+.footer-links a { font-size: .55rem; color: var(--ink3); letter-spacing: .15em; text-transform: uppercase; text-decoration: none; transition: color .3s; }
+.footer-links a:hover { color: var(--gold); }
+
+/* ═══ ANIMATIONS ═══ */
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity .8s ease, transform .8s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ═══ RESPONSIVE ═══ */
+@media (max-width: 680px) {
+  .menu-toggle { display: block; }
+  .nav-links { display: none; position: absolute; top: 56px; left: 0; right: 0; background: rgba(26,24,20,.96); backdrop-filter: blur(16px); flex-direction: column; padding: 20px 24px; gap: 16px; border-bottom: 1px solid rgba(166,139,75,.1); }
+  .nav-links.open { display: flex; }
+  .stats-bar { grid-template-columns: repeat(2, 1fr); }
+  .revenue-grid { grid-template-columns: 1fr; }
+  .ip-grid { grid-template-columns: 1fr; }
+  .roadmap-item { flex-direction: column; gap: 6px; }
+  .roadmap-phase { width: auto; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ NAV ═══ -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand"><span class="linno">Linno</span><span class="vera">Vera</span></a>
+    <button class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="app.html">App</a></li>
+      <li><a href="editorial.html">Editorial</a></li>
+      <li><a href="pitch.html" class="active">Investors</a></li>
+      <li><a href="app.html" class="nav-cta">Try LinnoVera</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ═══ PAGE HEADER ═══ -->
+<header class="page-header reveal">
+  <h1>Investor Overview</h1>
+  <p>LinnoVera is building the verified data layer for textile composition — the infrastructure that connects conscious consumers to truthful fabric information.</p>
+</header>
+
+<!-- ═══ KEY STATS ═══ -->
+<div class="stats-bar reveal">
+  <div class="stat-box">
+    <div class="num">72+</div>
+    <div class="label">Fibre Types Indexed</div>
+  </div>
+  <div class="stat-box">
+    <div class="num">150+</div>
+    <div class="label">Clothing Categories</div>
+  </div>
+  <div class="stat-box">
+    <div class="num">6</div>
+    <div class="label">Patent Claims Filed</div>
+  </div>
+  <div class="stat-box">
+    <div class="num">$0</div>
+    <div class="label">Paid Placements</div>
+  </div>
+</div>
+
+<!-- ═══ PITCH CONTENT ═══ -->
+<section class="pitch">
+
+  <div class="pitch-block reveal">
+    <h2>The Problem</h2>
+    <p>Consumers who care about natural fibres have no reliable way to search by composition. Retailer product pages bury fibre data in inconsistent formats. "Organic cotton blend" might mean 90% cotton or 40%. There is no standardized, searchable, verified source for what's actually in your clothes.</p>
+    <p>Greenwashing thrives in this gap — and consumers have no tool to verify claims after purchase.</p>
+  </div>
+
+  <div class="pitch-block reveal">
+    <h2>The Solution</h2>
+    <p>LinnoVera is a fibre composition verification engine. We normalize heterogeneous retailer data into a unified, searchable taxonomy of 72+ fibre types. Every product is verified against the retailer's own stated composition with a timestamp and URL.</p>
+    <p>Premium features include AI-powered deep search with confidence scoring, shareable Composition Cards, longitudinal Wardrobe Scoring, and greenwashing change-detection alerts.</p>
+  </div>
+
+  <div class="pitch-block reveal">
+    <h2>Revenue Model</h2>
+    <p>Three diversified revenue streams with a clear path from free to paid:</p>
+    <div class="revenue-grid">
+      <div class="rev-card">
+        <div class="pct">60%</div>
+        <h4>Affiliate Revenue</h4>
+        <p>Commission on verified product click-throughs to retailer sites.</p>
+      </div>
+      <div class="rev-card">
+        <div class="pct">30%</div>
+        <h4>Premium Subscriptions</h4>
+        <p>$15/month or $150/year. AI Deep Search, Composition Cards, Wardrobe Score.</p>
+      </div>
+      <div class="rev-card">
+        <div class="pct">10%</div>
+        <h4>Newsletter &amp; Data</h4>
+        <p>Sponsored newsletter placements and trend reports sold to retailers.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="pitch-block reveal">
+    <h2>Intellectual Property</h2>
+    <p>LinnoVera has filed a USPTO provisional patent covering 6 claims across the core technology stack. Prior art search across USPTO, CIPO, WIPO, Google Patents, and academic literature returned zero conflicting patents.</p>
+    <div class="ip-grid">
+      <div class="ip-item">
+        <h4>CIPO Trademark</h4>
+        <p>Application #2,459,505 — Classes 9, 35, 42. Filed March 3, 2026.</p>
+      </div>
+      <div class="ip-item">
+        <h4>USPTO Provisional Patent</h4>
+        <p>6 claims: fibre normalization, temporal verification, AI extraction, agent protocol, wardrobe scoring, profile evolution.</p>
+      </div>
+      <div class="ip-item">
+        <h4>Prior Art Clear</h4>
+        <p>All existing fibre patents relate to physical material testing, not software-based data aggregation.</p>
+      </div>
+      <div class="ip-item">
+        <h4>Technical Disclosure</h4>
+        <p>12-page document with CIPO-specific framing: measurable reduction in computational resources for fibre-specific discovery.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="pitch-block reveal">
+    <h2>Roadmap</h2>
+    <div class="roadmap">
+      <div class="roadmap-item">
+        <div class="roadmap-phase">Phase 1</div>
+        <div class="roadmap-body">
+          <h4>Launch &amp; Validate</h4>
+          <p>Deploy app, launch newsletter, begin affiliate revenue. BFN Accelerate submitted, MaRS and DMZ pending.</p>
+        </div>
+      </div>
+      <div class="roadmap-item">
+        <div class="roadmap-phase">Phase 2</div>
+        <div class="roadmap-body">
+          <h4>Scale Product Database</h4>
+          <p>Expand to 100+ products, hire developer, implement Supabase backend, launch premium tier.</p>
+        </div>
+      </div>
+      <div class="roadmap-item">
+        <div class="roadmap-phase">Phase 3</div>
+        <div class="roadmap-body">
+          <h4>AI &amp; Agent Infrastructure</h4>
+          <p>Deploy AI Deep Search, build external agent API, launch Vera and Lino AI fashion agents.</p>
+        </div>
+      </div>
+      <div class="roadmap-item">
+        <div class="roadmap-phase">Phase 4</div>
+        <div class="roadmap-body">
+          <h4>International Expansion</h4>
+          <p>Expand to outerwear, accessories, footwear. Madrid Protocol trademark for UK, EU, AU markets.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pitch-block reveal">
+    <h2>Differentiation</h2>
+    <p>LinnoVera is not a creator-driven affiliate platform like LTK or ShopMy. It is a verification-first search engine. Products are ranked by composition quality, not by influencer endorsement or paid placement.</p>
+    <p>The company is positioned at the intersection of three growing markets: sustainable fashion ($8.25B → $33B by 2030), AI-powered shopping, and consumer demand for supply chain transparency.</p>
+  </div>
+
+</section>
+
+<!-- ═══ CTA ═══ -->
+<section class="pitch-cta reveal">
+  <h2>Let's Talk</h2>
+  <p>We welcome conversations with investors, accelerators, and strategic partners.</p>
+  <a href="mailto:info@linnovera.com" class="pitch-cta-btn">info@linnovera.com</a>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="footer-brand"><span class="linno">Linno</span><span class="vera">Vera</span></div>
+  <div class="footer-copy">&copy; 2026 LinnoVera, Inc. &middot; Patent Pending &middot; Natural fibres, transparently found.</div>
+  <div class="footer-links">
+    <a href="mailto:info@linnovera.com">Contact</a>
+    <a href="app.html">App</a>
+    <a href="editorial.html">Editorial</a>
+    <a href="pitch.html">Investors</a>
+    <a href="privacy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
+  </div>
+</footer>
+
+<script>
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 20);
+});
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+}, { threshold: 0.15 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
