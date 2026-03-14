@@ -32,6 +32,87 @@
 html { scroll-behavior: smooth; }
 body { font-family: var(--sans); background: var(--bg); color: var(--ink); line-height: 1.6; -webkit-font-smoothing: antialiased; }
 
+/* ═══ NAV ═══ */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  background: rgba(26, 24, 20, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(166,139,75,.1);
+  transition: box-shadow .3s;
+}
+nav.scrolled { box-shadow: 0 1px 20px rgba(0,0,0,.3); }
+.nav-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 56px;
+}
+.nav-brand {
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: .01em;
+}
+.nav-brand .linno { color: var(--ink); }
+.nav-brand .vera { color: var(--gold); font-style: italic; }
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  list-style: none;
+}
+.nav-links a {
+  font-size: .6rem;
+  font-weight: 400;
+  color: var(--ink3);
+  text-decoration: none;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  transition: color .3s;
+  position: relative;
+}
+.nav-links a:hover { color: var(--ink); }
+.nav-links a.active { color: var(--gold); }
+.nav-links a.active::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0; right: 0;
+  height: 1px;
+  background: var(--gold);
+}
+.nav-cta {
+  padding: 7px 18px !important;
+  border: 1px solid var(--gold) !important;
+  color: var(--gold) !important;
+  letter-spacing: .2em !important;
+  transition: all .3s !important;
+}
+.nav-cta:hover { background: var(--gold) !important; color: var(--bg) !important; }
+.nav-cta::after { display: none !important; }
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+}
+.menu-toggle span {
+  display: block;
+  width: 18px;
+  height: 1.5px;
+  background: var(--ink2);
+  margin: 4px 0;
+  transition: all .3s;
+}
+
 /* ═══ HERO ═══ */
 .hero {
   min-height: 100vh;
@@ -396,6 +477,7 @@ footer {
   display: flex;
   gap: 20px;
   justify-content: center;
+  flex-wrap: wrap;
 }
 .footer-links a {
   font-size: .55rem;
@@ -431,6 +513,20 @@ footer {
 
 /* ═══ RESPONSIVE ═══ */
 @media (max-width: 680px) {
+  .menu-toggle { display: block; }
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 56px;
+    left: 0; right: 0;
+    background: rgba(26, 24, 20, 0.96);
+    backdrop-filter: blur(16px);
+    flex-direction: column;
+    padding: 20px 24px;
+    gap: 16px;
+    border-bottom: 1px solid rgba(166,139,75,.1);
+  }
+  .nav-links.open { display: flex; }
   .stats-grid { grid-template-columns: 1fr; gap: 32px; }
   .features { grid-template-columns: 1fr; }
   .standards-grid { grid-template-columns: 1fr; }
@@ -440,6 +536,23 @@ footer {
 </style>
 </head>
 <body>
+
+<!-- ═══ NAV ═══ -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand"><span class="linno">Linno</span><span class="vera">Vera</span></a>
+    <button class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="app.html">App</a></li>
+      <li><a href="editorial.html">Editorial</a></li>
+      <li><a href="pitch.html">Investors</a></li>
+      <li><a href="app.html" class="nav-cta">Try LinnoVera</a></li>
+    </ul>
+  </div>
+</nav>
 
 <!-- ═══ HERO ═══ -->
 <section class="hero">
@@ -602,12 +715,20 @@ footer {
   <div class="footer-copy">&copy; 2026 LinnoVera, Inc. &middot; Patent Pending &middot; Natural fibres, transparently found.</div>
   <div class="footer-links">
     <a href="mailto:info@linnovera.com">Contact</a>
-    <a href="/privacy.html">Privacy</a>
-    <a href="/terms.html">Terms</a>
+    <a href="app.html">App</a>
+    <a href="editorial.html">Editorial</a>
+    <a href="pitch.html">Investors</a>
+    <a href="privacy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
   </div>
 </footer>
 
 <script>
+// Nav scroll
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 20);
+});
+
 // Scroll-triggered reveal
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
@@ -629,9 +750,13 @@ function handleSignup() {
 }
 
 // Enter key for email
-document.getElementById('email-input').addEventListener('keypress', function(e) {
-  if (e.key === 'Enter') handleSignup();
+document.addEventListener('DOMContentLoaded', () => {
+  const input = document.getElementById('email-input');
+  if (input) {
+    input.addEventListener('keydown', e => { if (e.key === 'Enter') handleSignup(); });
+  }
 });
 </script>
+
 </body>
 </html>
