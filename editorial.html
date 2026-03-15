@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LinnoVera — The Fibre Edit</title>
-<meta name="description" content="Fibre guides, composition education, and the LinnoVera newsletter. Learn what's really in your clothes.">
+<title>LinnoVera — The LinnoVera Label</title>
+<meta name="description" content="Fibre guides, composition education, and The LinnoVera Label newsletter. Learn what's really in your clothes.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
@@ -229,8 +229,9 @@ footer { padding: 40px 24px; text-align: center; border-top: 1px solid rgba(166,
 .footer-links a:hover { color: var(--gold); }
 
 /* ═══ ANIMATIONS ═══ */
-.reveal { opacity: 0; transform: translateY(20px); transition: opacity .8s ease, transform .8s ease; }
-.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal { opacity: 1; transform: translateY(0); transition: opacity .8s ease, transform .8s ease; }
+.js-loaded .reveal { opacity: 0; transform: translateY(20px); }
+.js-loaded .reveal.visible { opacity: 1; transform: translateY(0); }
 
 /* ═══ RESPONSIVE ═══ */
 @media (max-width: 680px) {
@@ -265,14 +266,14 @@ footer { padding: 40px 24px; text-align: center; border-top: 1px solid rgba(166,
 
 <!-- ═══ PAGE HEADER ═══ -->
 <header class="page-header reveal">
-  <h1>The Fibre Edit</h1>
+  <h1>The LinnoVera Label</h1>
   <p>Guides, deep dives, and weekly dispatches on what's really in your clothes.</p>
 </header>
 
 <!-- ═══ NEWSLETTER SIGNUP ═══ -->
 <section class="newsletter-block reveal">
   <div class="newsletter-card">
-    <h2>The Thursday Thread</h2>
+    <h2>The LinnoVera Label</h2>
     <p class="sub">A weekly newsletter on fibre composition, greenwashing alerts, and curated natural fibre finds.</p>
 
     <!-- ═══════════════════════════════════════════════════════════════
@@ -398,6 +399,7 @@ footer { padding: 40px 24px; text-align: center; border-top: 1px solid rgba(166,
 </footer>
 
 <script>
+document.documentElement.classList.add('js-loaded');
 window.addEventListener('scroll', () => {
   document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 20);
 });
